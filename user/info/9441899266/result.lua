@@ -1,5 +1,6 @@
 return {
-    "ESP.lua",
-    "AutoKill.lua",
-    "murder.lua",
+    "Line1",
+    "Line2",
+    "Line3",
+    "Line...",
 }
