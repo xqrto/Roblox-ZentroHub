@@ -1,4 +1,5 @@
 return {
+    "back-break.lua",
     "brook.lua",
     "fire.lua",
     "glow.lua",
