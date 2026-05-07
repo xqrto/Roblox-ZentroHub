@@ -5,3 +5,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHu
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Info.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/command.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/commandtwis.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroEmotes.lua"))()
