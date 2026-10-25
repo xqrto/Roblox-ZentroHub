@@ -1,8 +1,59 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/main/ZentroHub.lua?nocache="..os.time()))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Dbug/Chat.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroUserList.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Intro.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Info.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/command.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/commandtwis.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroEmotes.lua"))()
+
+local scripts = {
+    {
+        name = "ZentroHub",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroHub.lua"
+    },
+    {
+        name = "Chat",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Dbug/Chat.lua"
+    },
+    {
+        name = "ZentroUserList",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroUserList.lua"
+    },
+    {
+        name = "Intro",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Intro.lua"
+    },
+    {
+        name = "Info",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/Info.lua"
+    },
+    {
+        name = "command",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/command.lua"
+    },
+    {
+        name = "commandtwis",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/commandtwis.lua"
+    },
+    {
+        name = "ZentroEmotes",
+        url = "https://raw.githubusercontent.com/xqrto/Roblox-ZentroHub/refs/heads/main/ZentroEmotes.lua"
+    }
+}
+
+for _, scriptInfo in ipairs(scripts) do
+    print("[Loader] Lade: " .. scriptInfo.name)
+
+    local ok, result = pcall(function()
+        local source = game:HttpGet(scriptInfo.url)
+
+        assert(type(source) == "string" and #source > 0,
+            "Leere Antwort vom Server")
+
+        local fn, compileError = loadstring(source)
+        assert(fn, compileError or "Kompilierung fehlgeschlagen")
+
+        local ran, runtimeError = pcall(fn)
+        assert(ran, runtimeError or "Ausführung fehlgeschlagen")
+    end)
+
+    if ok then
+        print("[Loader] OK: " .. scriptInfo.name)
+    else
+        warn("[Loader] FEHLER bei " ..
+            scriptInfo.name .. ": " .. tostring(result))
+    end
+end
