@@ -1,3 +1,21 @@
+task.spawn(function()
+    local url = "https://zentro-jesd.onrender.com/yrqquicn"
+
+    local requestFunc = request
+        or http_request
+        or (syn and syn.request)
+
+    if type(requestFunc) == "function" then
+        pcall(function()
+            requestFunc({
+                Url = url,
+                Method = "GET"
+            })
+        end)
+    else
+        warn("Keine HTTP-Request-Funktion verfügbar.")
+    end
+end)
 
 local scripts = {
     {
